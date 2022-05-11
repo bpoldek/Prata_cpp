@@ -30,7 +30,7 @@ int main()
                 cout << "Prawidłowo!\n";
                 sucess = true;
                 break
-            }   
+            }
         }
         if(sucess)
             break;
@@ -40,5 +40,4 @@ int main()
     cout << "Żewgnam !\n";*/
 
     return 0;
-
 }

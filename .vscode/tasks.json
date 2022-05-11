@@ -9,7 +9,10 @@
 				"-g",
 				"${fileDirname}/*.cpp",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"-Wall",
+				"-Wextra",
+				"-pedantic"
 			],
 			"options": {
 				"cwd": "/usr/bin"

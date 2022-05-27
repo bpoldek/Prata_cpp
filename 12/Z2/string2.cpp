@@ -55,14 +55,14 @@ String &String::operator=(const String &st)
         return *this;
     delete[] str;
     len = st.len;
-    str = new char[len + 1];
+    str = new char[std::strlen(st.str) + 1];
     std::strcpy(str, st.str);
     return *this;
 }
 String &String::operator=(const char *s)
 {
     delete[] str;
-    len = std::strlen(s);
+    len = std::strlen(s) - 1;
     str = new char[len + 1];
     std::strcpy(str, s);
     return *this;
@@ -114,6 +114,7 @@ String operator+(const char *s, const String &st)
 {
     String temp;
     temp.len = std::strlen(s) + st.len;
+    temp.len -= 1;
     strcpy(temp.str, s);
     strcat(temp.str, st.str);
     return temp;
@@ -122,6 +123,7 @@ String operator+(const String &st1, const String &st2)
 {
     String temp;
     temp.len = st1.len + st2.len;
+    temp.len -= 1;
     strcpy(temp.str, st1.str);
     strcat(temp.str, st2.str);
     return temp;

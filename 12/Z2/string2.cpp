@@ -35,20 +35,6 @@ String::~String()
     --num_strings;
     delete[] str;
 }
-/*String & String::operator+(String &st)
-{
-    len = st.len + len;
-    str = new char[len+1];
-    std::strcat(str,st.str);
-    return *this;
-}
-String & String::operator+( const char * s)
-{
-    len = std::strlen(s) + len;
-    str = new char[len+1];
-    std::strcat(str,s);
-    return *this;
-}*/
 String &String::operator=(const String &st)
 {
     if (this == &st)

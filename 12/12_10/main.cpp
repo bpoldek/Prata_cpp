@@ -8,10 +8,10 @@ bool newcustomer(double x);
 
 int main()
 {
-    using::std::cin;
-    using::std::cout;
-    using::std::endl;
-    using::std::ios_base;
+    using ::std::cin;
+    using ::std::cout;
+    using ::std::endl;
+    using ::std::ios_base;
 
     std::srand(std::time(0));
 
@@ -31,7 +31,7 @@ int main()
     double prehour;
     cin >> prehour;
     double min_per_cust;
-    min_per_cust = MIN_PER_HR /prehour;
+    min_per_cust = MIN_PER_HR / prehour;
 
     Item temp;
     long turnaways = 0;
@@ -41,11 +41,11 @@ int main()
     int wait_time = 0;
     long line_wait = 0;
 
-    for(int cycle = 0; cycle < cyclelimit; cycle++)
+    for (int cycle = 0; cycle < cyclelimit; cycle++)
     {
-        if(newcustomer(min_per_cust))
+        if (newcustomer(min_per_cust))
         {
-            if(line.isfull())
+            if (line.isfull())
                 turnaways++;
             else
             {
@@ -54,18 +54,18 @@ int main()
                 line.enqueue(temp);
             }
         }
-        if(wait_time <= 0 && !line.isempty())
+        if (wait_time <= 0 && !line.isempty())
         {
             line.dequeue(temp);
             wait_time = temp.ptime();
             line_wait += cycle - temp.when();
             served++;
         }
-        if(wait_time > 0)
+        if (wait_time > 0)
             wait_time--;
         sum_line += line.queuecount();
     }
-    if( customers > 0)
+    if (customers > 0)
     {
         cout << " liczba klientów przyjętych: " << customers << endl;
         cout << "liczba klientow obsłużonych: " << served << endl;
@@ -74,17 +74,16 @@ int main()
         cout.precision(2);
         cout.setf(ios_base::fixed, ios_base::floatfield);
         cout.setf(ios_base::showpoint);
-        cout << (double) sum_line / cyclelimit << endl;
-        cout << "     średni czas oczekiwania: " << (double) line_wait /served << " minut \n";
+        cout << (double)sum_line / cyclelimit << endl;
+        cout << "     średni czas oczekiwania: " << (double)line_wait / served << " minut \n";
     }
     else
         cout << "Brak klientów!\n";
     cout << "Gotów!\n";
 
     return 0;
-
 }
 bool newcustomer(double x)
 {
-    return (std::rand() * x / RAND_MAX <1);
+    return (std::rand() * x / RAND_MAX < 1);
 }
